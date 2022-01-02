@@ -1,33 +1,10 @@
-# REPO NAME: EagleTemplate-new
-## License: CERN Open Hardware Licence v1.2
+# MRCS-QandD-Carbon-Mic-Adapter
+
 ## License: Creative Commons Attribution-NonCommercial-ShareAlike
 
-Delete one of the license lines above, and replace this line and following with the contents of the doc.md file
-
-### How to use this template:
-
-  1. Create a repo using this template, 
-  2. Use eagle to create your project
-  3. Edit the other text files to describe your project
-  4. git add .
-  5. git commit -m "add to git"
-  6. git tag -a 1.0 -m 1.0
-  7. git push origin 1.0
-  
-
-This is a template for new eagle designs.
-It includes a blank schematic with a title block ready for editing and a
-default PCB that uses the SPCoast.lbr's BOARD component, Fiducials and an OSHW logo.
-
-First line: A short description of the project, used as a subtitle or tagline
-
-Remaining lines: a verbose changelog of what makes this "git version" different from the last.
-Use this space (in Markdown format) to describe the context and details of the changes.
-This section should be 5 to 20 lines of interesting detail; each version tab in the project will 
-display this text to help the reader understand why this version is differnet...
-
-The published project on the SPCoast.github.io website will
-include the relevant git commit messages as a terse, high level
-changelog, so don't replicate those messages here.
-
-
+I designed this adapter after working with Lee Nicholas on the phone system for the Utah, Colorado and Western. Lee has a carbon mic in a metal enclosure on a boom
+over his CTC machine for the Dispatcher's use.  Lee had also been using my Active Telephone Speech Network (ATSN) for use with a computer headset, powered speaker and a 
+footswitch. At one time he wanted to use the ATSN with the carbon mic, but ATSN supports dynamics and Electrets, but ATSN doesn't supply enough current for a carbon mic.
+This adapter takes filtered 12V (or any voltage up to 24V with changes to the dropping resistor) and powers a carbon mic. The mic is in paralled with 600:600 isolation
+transformer (in series with a 1uF blocking cap) and provides line level audio out.  This audio can feed an ATSN or any line to power amplifier, numerous powered speakers 
+and and small amplifier boards are avaialable which will work well with the MRCS-QandD-Carbon-Mic-Adapter.
