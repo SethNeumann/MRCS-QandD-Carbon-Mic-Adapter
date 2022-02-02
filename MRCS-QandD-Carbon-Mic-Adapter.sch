@@ -7986,30 +7986,34 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <part name="P+1" library="SPCoast" deviceset="+12V" device=""/>
 <part name="C1" library="SPCoast" deviceset="CAP*" device="PTH2" value="1.0 uF"/>
 <part name="GND1" library="SPCoast" deviceset="GND" device=""/>
-<part name="R1" library="SPCoast" deviceset="R*" device="PTH04" value="150"/>
+<part name="R1" library="SPCoast" deviceset="R*" device="PTH04" value="220"/>
 <part name="CON2" library="SPCoast" deviceset="CONNECTOR-AUDIO" device="3.5MM-ADAMTECH" value="Output"/>
 <part name="U$1" library="MRCS" deviceset="EI14_600-600" device=""/>
 <part name="CON3" library="SPCoast" deviceset="CONNECTOR-M06" device="3.5MM-6"/>
 <part name="CON1" library="SPCoast" deviceset="CONNECTOR-DC-POWER" device="-RA" value="DC PWR"/>
 <part name="GND2" library="SPCoast" deviceset="GND" device=""/>
-<part name="GND3" library="SPCoast" deviceset="GND" device=""/>
 <part name="P+2" library="SPCoast" deviceset="+12V" device=""/>
 <part name="R2" library="pot" deviceset="TRIM_US-" device="RS3" value="1K"/>
 <part name="C2" library="SPCoast" deviceset="CAP*" device="PTH2" value="0.1 uF"/>
+<part name="GND4" library="SPCoast" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="152.4" y="20.32" size="2.1844" layer="97">Carbon Mic Adapter</text>
-<text x="240.03" y="12.7" size="2.1844" layer="97">1.0</text>
+<text x="240.03" y="12.7" size="2.1844" layer="97">1.1</text>
 <text x="241.3" y="6.35" size="2.1844" layer="97">A</text>
 <text x="166.37" y="6.35" size="2.1844" layer="97">Seth Neumann</text>
 <text x="21.59" y="118.11" size="1.778" layer="91">+12
 GND
 Mic +
 Mic -
-Out R
-Out T</text>
+Out T
+Out R</text>
+<text x="63.5" y="160.02" size="1.778" layer="91">R1 is 220 ohms for 12V supply or 680 ohms for 24V
+supply.  You should be drawing 30-40 mA with a T1
+transmitter from a 500/2500 set.  F1 transmitter
+from a 300 set or Candlestick will draw slightly less.</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="FRAME" x="0" y="0"/>
@@ -8024,10 +8028,10 @@ Out T</text>
 <instance part="CON3" gate="J" x="38.1" y="124.46"/>
 <instance part="CON1" gate="J" x="33.02" y="154.94"/>
 <instance part="GND2" gate="1" x="45.72" y="144.78"/>
-<instance part="GND3" gate="1" x="71.12" y="53.34"/>
 <instance part="P+2" gate="1" x="88.9" y="132.08"/>
 <instance part="R2" gate="G$1" x="134.62" y="111.76"/>
 <instance part="C2" gate="C1" x="83.82" y="78.74" rot="R180"/>
+<instance part="GND4" gate="1" x="83.82" y="99.06"/>
 </instances>
 <busses>
 </busses>
@@ -8065,12 +8069,6 @@ Out T</text>
 <junction x="45.72" y="154.94"/>
 </segment>
 <segment>
-<wire x1="43.18" y1="71.12" x2="71.12" y2="71.12" width="0.6096" layer="91"/>
-<pinref part="CON2" gate="J" pin="SLEEVE"/>
-<pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="71.12" y1="71.12" x2="71.12" y2="55.88" width="0.6096" layer="91"/>
-</segment>
-<segment>
 <wire x1="78.74" y1="134.62" x2="78.74" y2="152.4" width="0.6096" layer="91"/>
 <wire x1="78.74" y1="152.4" x2="88.9" y2="152.4" width="0.6096" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
@@ -8079,6 +8077,18 @@ Out T</text>
 <wire x1="43.18" y1="129.54" x2="63.5" y2="129.54" width="0.6096" layer="91"/>
 <wire x1="63.5" y1="129.54" x2="63.5" y2="134.62" width="0.6096" layer="91"/>
 <wire x1="63.5" y1="134.62" x2="78.74" y2="134.62" width="0.6096" layer="91"/>
+</segment>
+<segment>
+<pinref part="CON3" gate="J" pin="3"/>
+<wire x1="43.18" y1="124.46" x2="60.96" y2="124.46" width="0.6096" layer="91"/>
+<wire x1="60.96" y1="124.46" x2="60.96" y2="119.38" width="0.6096" layer="91"/>
+<wire x1="60.96" y1="119.38" x2="78.74" y2="119.38" width="0.6096" layer="91"/>
+<wire x1="78.74" y1="119.38" x2="78.74" y2="101.6" width="0.6096" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="PBOTTOM"/>
+<wire x1="78.74" y1="101.6" x2="83.82" y2="101.6" width="0.6096" layer="91"/>
+<pinref part="GND4" gate="1" pin="GND"/>
+<wire x1="83.82" y1="101.6" x2="91.44" y2="101.6" width="0.6096" layer="91"/>
+<junction x="83.82" y="101.6"/>
 </segment>
 </net>
 <net name="MIC+" class="0">
@@ -8100,17 +8110,6 @@ Out T</text>
 <wire x1="86.36" y1="121.92" x2="91.44" y2="121.92" width="0.4064" layer="91"/>
 </segment>
 </net>
-<net name="OUTR" class="0">
-<segment>
-<pinref part="CON3" gate="J" pin="3"/>
-<wire x1="43.18" y1="124.46" x2="60.96" y2="124.46" width="0.6096" layer="91"/>
-<wire x1="60.96" y1="124.46" x2="60.96" y2="119.38" width="0.6096" layer="91"/>
-<wire x1="60.96" y1="119.38" x2="78.74" y2="119.38" width="0.6096" layer="91"/>
-<wire x1="78.74" y1="119.38" x2="78.74" y2="101.6" width="0.6096" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="PBOTTOM"/>
-<wire x1="78.74" y1="101.6" x2="91.44" y2="101.6" width="0.6096" layer="91"/>
-</segment>
-</net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="STOP"/>
@@ -8125,41 +8124,41 @@ Out T</text>
 <pinref part="R2" gate="G$1" pin="A"/>
 <wire x1="127" y1="101.6" x2="134.62" y2="101.6" width="0.4064" layer="91"/>
 <wire x1="134.62" y1="101.6" x2="134.62" y2="104.14" width="0.4064" layer="91"/>
-<pinref part="CON2" gate="J" pin="TIP"/>
-<wire x1="43.18" y1="76.2" x2="60.96" y2="76.2" width="0.4064" layer="91"/>
-<wire x1="60.96" y1="76.2" x2="60.96" y2="86.36" width="0.4064" layer="91"/>
-<wire x1="60.96" y1="86.36" x2="68.58" y2="86.36" width="0.4064" layer="91"/>
-<wire x1="68.58" y1="86.36" x2="83.82" y2="86.36" width="0.4064" layer="91"/>
+<wire x1="55.88" y1="86.36" x2="83.82" y2="86.36" width="0.4064" layer="91"/>
 <wire x1="83.82" y1="86.36" x2="134.62" y2="86.36" width="0.4064" layer="91"/>
 <wire x1="134.62" y1="86.36" x2="134.62" y2="101.6" width="0.4064" layer="91"/>
 <pinref part="CON3" gate="J" pin="2"/>
 <wire x1="43.18" y1="121.92" x2="55.88" y2="121.92" width="0.4064" layer="91"/>
-<wire x1="55.88" y1="121.92" x2="55.88" y2="116.84" width="0.4064" layer="91"/>
-<wire x1="55.88" y1="116.84" x2="68.58" y2="116.84" width="0.4064" layer="91"/>
-<wire x1="68.58" y1="116.84" x2="68.58" y2="86.36" width="0.4064" layer="91"/>
-<junction x="68.58" y="86.36"/>
+<wire x1="55.88" y1="121.92" x2="55.88" y2="86.36" width="0.4064" layer="91"/>
+<junction x="55.88" y="86.36"/>
 <junction x="134.62" y="101.6"/>
 <pinref part="C2" gate="C1" pin="2"/>
 <wire x1="83.82" y1="83.82" x2="83.82" y2="86.36" width="0.4064" layer="91"/>
 <junction x="83.82" y="86.36"/>
+<pinref part="CON2" gate="J" pin="SLEEVE"/>
+<junction x="43.18" y="71.12"/>
+<wire x1="43.18" y1="71.12" x2="55.88" y2="71.12" width="0.4064" layer="91"/>
+<wire x1="55.88" y1="71.12" x2="55.88" y2="86.36" width="0.4064" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">
 <segment>
-<pinref part="CON2" gate="J" pin="RING"/>
-<wire x1="43.18" y1="73.66" x2="53.34" y2="73.66" width="0.4064" layer="91"/>
-<wire x1="53.34" y1="73.66" x2="83.82" y2="73.66" width="0.4064" layer="91"/>
 <wire x1="83.82" y1="73.66" x2="147.32" y2="73.66" width="0.4064" layer="91"/>
 <wire x1="147.32" y1="73.66" x2="147.32" y2="111.76" width="0.4064" layer="91"/>
 <pinref part="R2" gate="G$1" pin="S"/>
 <wire x1="147.32" y1="111.76" x2="139.7" y2="111.76" width="0.4064" layer="91"/>
-<pinref part="CON3" gate="J" pin="1"/>
-<wire x1="43.18" y1="119.38" x2="53.34" y2="119.38" width="0.4064" layer="91"/>
-<wire x1="53.34" y1="119.38" x2="53.34" y2="73.66" width="0.4064" layer="91"/>
-<junction x="53.34" y="73.66"/>
 <pinref part="C2" gate="C1" pin="1"/>
 <wire x1="83.82" y1="76.2" x2="83.82" y2="73.66" width="0.4064" layer="91"/>
-<junction x="83.82" y="73.66"/>
+<pinref part="CON2" gate="J" pin="TIP"/>
+<wire x1="43.18" y1="76.2" x2="48.26" y2="76.2" width="0.4064" layer="91"/>
+<wire x1="48.26" y1="73.66" x2="48.26" y2="76.2" width="0.4064" layer="91"/>
+<pinref part="CON2" gate="J" pin="RING"/>
+<wire x1="43.18" y1="73.66" x2="48.26" y2="73.66" width="0.4064" layer="91"/>
+<wire x1="83.82" y1="73.66" x2="48.26" y2="73.66" width="0.4064" layer="91"/>
+<junction x="48.26" y="73.66"/>
+<pinref part="CON3" gate="J" pin="1"/>
+<wire x1="43.18" y1="119.38" x2="48.26" y2="119.38" width="0.4064" layer="91"/>
+<wire x1="48.26" y1="76.2" x2="48.26" y2="119.38" width="0.4064" layer="91"/>
 </segment>
 </net>
 </nets>
