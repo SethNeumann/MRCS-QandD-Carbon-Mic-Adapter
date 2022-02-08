@@ -1,7 +1,7 @@
 title: MRCS-QandD-Carbon-Mic-Adapter
 designer: Seth Neumann
-fabricated: no
-fab_date: YYYY-MM
-status: Pick one of   experimental
+fabricated: Yes
+fab_date: 2022-01
+status: Production
 publish: yes
 tags: [MRCS, SPCoast, eagle]
